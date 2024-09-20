@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=3 format=3 uid="uid://bt2ju64bl0yrp"]
 
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_jg8lq"]
+[ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
+[ext_resource type="PackedScene" uid="uid://iqjijkohmmgs" path="res://scenes/boid.tscn" id="2_jnmx8"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(584, 326)
-texture = ExtResource("1_jg8lq")
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="BoidSpawner" type="Node2D" parent="Node2D"]
+script = ExtResource("1_xeaao")
+boid_scene = ExtResource("2_jnmx8")
