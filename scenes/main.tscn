@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=14 format=3 uid="uid://bt2ju64bl0yrp"]
 
+[ext_resource type="Script" path="res://scripts/initialiser.gd" id="1_cysgk"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="3_btgvy"]
+[ext_resource type="Script" path="res://scripts/entities/camera_manager.gd" id="3_d2h5e"]
 [ext_resource type="Script" path="res://scripts/entities/cheese_spawner.gd" id="3_knbe3"]
 [ext_resource type="PackedScene" uid="uid://x3aqdcb3njho" path="res://scenes/cheese.tscn" id="4_wygo1"]
 [ext_resource type="Script" path="res://scripts/globals/game_manager.gd" id="4_xhb8v"]
@@ -19,28 +21,17 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -455, 483, -448, 
 
 [node name="Main" type="Node2D"]
 
-[node name="GameManager" type="Node2D" parent="."]
-script = ExtResource("4_xhb8v")
+[node name="Initialiser" type="Node2D" parent="."]
+script = ExtResource("1_cysgk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("9_4eqlh")]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.25, 1.25)
-
-[node name="Enemy" parent="." instance=ExtResource("8_v6n06")]
-unique_name_in_owner = true
-position = Vector2(-154, -273)
-scale = Vector2(0.5, 0.5)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_wxyv3")
-
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="BoidSpawner" type="Node2D" parent="Spawners"]
+[node name="PlayerSpawn" type="Marker2D" parent="Spawners"]
 position = Vector2(-1, 276)
 script = ExtResource("1_xeaao")
 start_x_direction = Vector2(0, 0)
@@ -53,6 +44,22 @@ unique_name_in_owner = true
 script = ExtResource("3_knbe3")
 cheese_scene = ExtResource("4_wygo1")
 coin_10_scene = ExtResource("6_r04ev")
+
+[node name="InitialCoin" type="Marker2D" parent="Spawners/CheeseSpawner"]
+position = Vector2(0, 171)
+
+[node name="CameraManager" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(1.25, 1.25)
+script = ExtResource("3_d2h5e")
+
+[node name="Enemy" parent="." instance=ExtResource("8_v6n06")]
+unique_name_in_owner = true
+position = Vector2(-154, -273)
+scale = Vector2(0.5, 0.5)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wxyv3")
 
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -71,3 +78,6 @@ texture = ExtResource("6_gar54")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall/Area2D"]
 scale = Vector2(6.36, 6.28)
 shape = SubResource("RectangleShape2D_gneex")
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("4_xhb8v")

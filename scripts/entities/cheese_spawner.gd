@@ -10,6 +10,10 @@ var state: GameState
 
 func init(game_state: GameState) -> void:
 	state = game_state
+	var coin := coin_10_scene.instantiate() as PowerUp
+	add_child(coin)
+	coin.global_position = $InitialCoin.global_position
+	coin.init(state, 100)
 
 func start() -> void:
 	while(true):

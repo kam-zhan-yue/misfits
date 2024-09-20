@@ -24,7 +24,11 @@ func hide_popup() -> void:
 	
 func _on_tutorial(key: String) -> void:
 	if key in TUTORIALS:
+		show_popup()
 		set_text(TUTORIALS[key])
+		if key == "COIN":
+			await Global.seconds(5.0)
+			hide_popup()
 
 func set_text(body: String) ->  void:
 	text.text = str(TAGS, body)
