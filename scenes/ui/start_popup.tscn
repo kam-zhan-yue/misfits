@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmfuuxyvr4but"]
+
+[ext_resource type="Script" path="res://scripts/ui/start_popup.gd" id="1_gvo8i"]
+[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="2_nnfxw"]
+
+[node name="StartPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvo8i")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_nnfxw")
+bbcode_enabled = true
+text = "[shake rate=50.0 level=5 connected=1][center]Like, A Hundred Little Guys"
+fit_content = true
+scroll_active = false
+
+[node name="Subtitle2" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_nnfxw")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[shake rate=50.0 level=5 connected=1][center]use WASD or Arrow Keys to begin"
+fit_content = true
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Subtitle" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_nnfxw")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center] a short game by Alex Kam"
+fit_content = true
+scroll_active = false

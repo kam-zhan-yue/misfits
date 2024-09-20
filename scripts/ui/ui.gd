@@ -4,10 +4,12 @@ extends Control
 var state: GameState
 var started := false
 
-@onready var start_popup: StartPopup = %StartPopup
+@onready var start_popup := %StartPopup as StartPopup
+@onready var tutorial_popup := %TutorialPopup as TutorialPopup
 
 func _ready() -> void:
 	start_popup.show_popup()
+	tutorial_popup.hide_popup()
 
 func init(game_state: GameState) -> void:
 	state = game_state

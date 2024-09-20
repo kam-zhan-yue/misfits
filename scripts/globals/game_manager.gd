@@ -9,10 +9,11 @@ extends Node2D
 var game_state: GameState
 
 func _ready() -> void:
+	BoidManager.set_root(self)
 	init_game()
 	
 func init_game() -> void:
-	game_state = GameState.new(player)
+	game_state = GameState.new(player, self)
 	game_state.on_cheese.connect(_on_cheese)
 	game_state.on_start.connect(_on_start_game)
 	cheese_spawner.init(game_state)
@@ -22,6 +23,7 @@ func init_game() -> void:
 func _on_start_game() -> void:
 	BoidManager.start()
 	cheese_spawner.start()
+	game_state.trigger_tutorial("INTRO")
 	
 func _on_cheese(cheeses: int) -> void:
 	print("Cheeses: ", cheeses)

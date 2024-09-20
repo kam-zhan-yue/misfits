@@ -4,9 +4,12 @@ const SETTINGS = preload("res://resources/boid_settings.tres")
 const BOID = preload("res://scenes/boid.tscn")
 
 var boids: Array[Boid] = []
-
+var root: Node2D
 var input: Vector2
 var running := false
+
+func set_root(r: Node2D) -> void:
+	root = r
 
 func start() -> void:
 	running = true
@@ -26,10 +29,10 @@ func _process(_delta: float) -> void:
 
 func spawn_boid(position: Vector2, direction: Vector2) -> void:
 	var boid := BOID.instantiate() as Boid
-	add_child(boid)
 	boid.global_position = position
 	boid.direction = direction
 	boid.init(1)
+	root.call_deferred("add_child", boid)
 
 func simulate(boid: Boid) -> void:
 	var nearby := get_nearby_boids(boid)

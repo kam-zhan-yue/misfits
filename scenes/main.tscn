@@ -17,7 +17,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -455, 483, -448, 
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gneex"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("4_xhb8v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -68,6 +71,3 @@ texture = ExtResource("6_gar54")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall/Area2D"]
 scale = Vector2(6.36, 6.28)
 shape = SubResource("RectangleShape2D_gneex")
-
-[node name="GameManager" type="Node2D" parent="."]
-script = ExtResource("4_xhb8v")
