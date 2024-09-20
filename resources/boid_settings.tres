@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource("1_0qoy6")
-min_speed = 70.0
-max_speed = 200.0
+min_speed = 100.0
+max_speed = 100.0
 max_steer_force = 100.0
-vision_radius = 200.0
+vision_radius = 100.0
 obstacle_vision_radius = 50.0
-separation_weight = 1.0
-alignment_weight = 2.0
+separation_weight = 2.0
+alignment_weight = 3.0
 cohesion_weight = 3.0
 obstacle_weight = 1.0
 avoidance_weight = 1.0

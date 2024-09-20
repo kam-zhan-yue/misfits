@@ -19,6 +19,10 @@ func simulate(boid: Boid) -> void:
 	var nearby := get_nearby_boids(boid)
 	simulate_forces(boid, nearby)
 	boid.simulate()
+	
+func move(speed: Vector2) -> void:
+	print('moving to ', speed)
+	pass
 
 func get_nearby_boids(boid: Boid) -> Array[Boid]:
 	var nearby: Array[Boid] = []
