@@ -2,7 +2,7 @@ class_name Enemy
 extends Node2D
 
 @export var speed := 100.0
-@export var range := 500.0
+@export var range := 300.0
 @onready var nav := $NavigationAgent2D as NavigationAgent2D
 
 var state: GameState

@@ -103,13 +103,13 @@ func get_relative_position(p1: Vector2, p2: Vector2) -> Vector2:
 	var q1 = get_quadrant(p1)
 	match q1:
 		1:
-			return quadrant_1(p2)
+			return get_closest(p1, p2, quadrant_1(p2))
 		2:
-			return quadrant_2(p2)
+			return get_closest(p1, p2, quadrant_2(p2))
 		3:
-			return quadrant_3(p2)
+			return get_closest(p1, p2, quadrant_3(p2))
 		4:
-			return quadrant_4(p2)
+			return get_closest(p1, p2, quadrant_4(p2))
 		_:
 			return Vector2.ZERO
 
@@ -170,7 +170,6 @@ func quadrant_4(p: Vector2) -> Vector2:
 		2:
 			return p + Vector2(0.0, SETTINGS.height * 2)
 		3:
-			var out_bounds = p + Vector2(SETTINGS.width * 2, 0.0)
 			return p + Vector2(SETTINGS.width * 2, 0.0)
 		4:
 			return p
@@ -178,8 +177,8 @@ func quadrant_4(p: Vector2) -> Vector2:
 			return Vector2.ZERO
 
 func get_closest(p1: Vector2, p2: Vector2, p3: Vector2) -> Vector2:
-	var distance1 = (p2 - p1).length()
-	var distance2 = (p3 - p1).length()
+	var distance1 := (p2 - p1).length()
+	var distance2 := (p3 - p1).length()
 	if distance1 < distance2:
 		return p2
 	else:
