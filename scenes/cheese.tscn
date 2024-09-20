@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://x3aqdcb3njho"]
+
+[ext_resource type="Script" path="res://scripts/entities/cheese.gd" id="1_lv0kj"]
+[ext_resource type="Texture2D" uid="uid://b8dj2njqb148j" path="res://aseprite/cheese-Sheet.png" id="2_4ltq5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8nkq"]
+atlas = ExtResource("2_4ltq5")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15sss"]
+atlas = ExtResource("2_4ltq5")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45i1e"]
+atlas = ExtResource("2_4ltq5")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpdf0"]
+atlas = ExtResource("2_4ltq5")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7o34"]
+atlas = ExtResource("2_4ltq5")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6mks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8nkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15sss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45i1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpdf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7o34")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r376"]
+
+[node name="Cheese" type="Node2D"]
+script = ExtResource("1_lv0kj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d6mks")
+frame_progress = 0.0446051
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_4r376")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

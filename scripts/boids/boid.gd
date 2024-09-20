@@ -50,8 +50,8 @@ func simulate(input: Vector2) -> void:
 func idle_speed() -> float:
 	return BoidManager.SETTINGS.idle_speed
 
-func rat_speed(velocity: Vector2) -> float:
-	return clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
+func rat_speed(v: Vector2) -> float:
+	return clampf(v.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
 
 func idle() -> void:
 	var separation_force := steer_towards(separation, true)
@@ -82,11 +82,11 @@ func rat(input: Vector2) -> void:
 	var final_speed = clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
 	velocity = velocity.normalized() * final_speed
 
-func steer_towards(target: Vector2, idle: bool = false) -> Vector2:
+func steer_towards(target: Vector2, use_idle: bool = false) -> Vector2:
 	if target == Vector2.ZERO:
 		return Vector2.ZERO
 	var v := target.normalized() * BoidManager.SETTINGS.max_speed - velocity
-	if idle:
+	if use_idle:
 		return v.clampf(-BoidManager.SETTINGS.idle_steer_force, BoidManager.SETTINGS.idle_steer_force)
 	else:
 		return v.clampf(-BoidManager.SETTINGS.max_steer_force, BoidManager.SETTINGS.max_steer_force)
