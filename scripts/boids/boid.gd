@@ -39,12 +39,14 @@ func init(boid_group: int) -> void:
 	velocity = middle * direction.normalized()
 	BoidManager.init(self)
 
-func simulate() -> void:
+func simulate(input: Vector2) -> void:
+	var input_force := steer_towards(input)
 	var separation_force := steer_towards(separation)
 	var alignment_force := steer_towards(alignment)
 	var cohesion_force := steer_towards(cohesion)
 	var obstacle_force := steer_towards(get_obstacle_force())
 	var acceleration := Vector2.ZERO
+	acceleration += input_force * BoidManager.SETTINGS.input_weight
 	acceleration += separation_force * BoidManager.SETTINGS.separation_weight
 	acceleration += alignment_force * BoidManager.SETTINGS.alignment_weight
 	acceleration += cohesion_force * BoidManager.SETTINGS.cohesion_weight
