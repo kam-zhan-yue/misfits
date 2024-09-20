@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8b7a6uiwrf0w"
-path="res://.godot/imported/rat.aseprite-6c0b2967e3eb06c7ac01995af46543f6.ctex"
+uid="uid://b8dj2njqb148j"
+path="res://.godot/imported/cheese-Sheet.png-fb20087d6766efa11566447f4d0ee5a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://aseprite/rat.aseprite"
-dest_files=["res://.godot/imported/rat.aseprite-6c0b2967e3eb06c7ac01995af46543f6.ctex"]
+source_file="res://assets/aseprite/cheese-Sheet.png"
+dest_files=["res://.godot/imported/cheese-Sheet.png-fb20087d6766efa11566447f4d0ee5a3.ctex"]
 
 [params]
 

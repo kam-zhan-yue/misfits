@@ -7,10 +7,14 @@ var spawnable := 0
 
 signal on_cheese(int)
 signal on_power_up(int)
+signal on_start
 
 func _init(p: Player = null) -> void:
 	player = p
 	cheeses = 0
+
+func start() -> void:
+	on_start.emit()
 
 func get_cheese() -> void:
 	cheeses += 1

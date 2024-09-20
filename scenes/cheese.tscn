@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://x3aqdcb3njho"]
 
 [ext_resource type="Script" path="res://scripts/entities/cheese.gd" id="1_lv0kj"]
-[ext_resource type="Texture2D" uid="uid://b8dj2njqb148j" path="res://aseprite/cheese-Sheet.png" id="2_4ltq5"]
+[ext_resource type="Texture2D" uid="uid://b8dj2njqb148j" path="res://assets/aseprite/cheese-Sheet.png" id="2_4ltq5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8nkq"]
 atlas = ExtResource("2_4ltq5")

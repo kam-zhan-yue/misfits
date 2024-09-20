@@ -6,6 +6,10 @@ const BOID = preload("res://scenes/boid.tscn")
 var boids: Array[Boid] = []
 
 var input: Vector2
+var running := false
+
+func start() -> void:
+	running = true
 
 func init(boid: Boid) -> void:
 	boids.push_back(boid)
@@ -14,6 +18,7 @@ func uninit(boid: Boid) -> void:
 	boids.erase(boid)
 
 func _process(_delta: float) -> void:
+	if not running: return
 	for boid in boids:
 		if boid:
 			simulate(boid)

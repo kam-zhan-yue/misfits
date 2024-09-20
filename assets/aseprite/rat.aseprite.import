@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfkjxlmaquor0"
-path="res://.godot/imported/coin_10.aseprite-a5be99de9a81638bd7697d61a79e835c.ctex"
+uid="uid://8b7a6uiwrf0w"
+path="res://.godot/imported/rat.aseprite-504b1e510458b3ead105287d74180f54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://aseprite/coin_10.aseprite"
-dest_files=["res://.godot/imported/coin_10.aseprite-a5be99de9a81638bd7697d61a79e835c.ctex"]
+source_file="res://assets/aseprite/rat.aseprite"
+dest_files=["res://.godot/imported/rat.aseprite-504b1e510458b3ead105287d74180f54.ctex"]
 
 [params]
 

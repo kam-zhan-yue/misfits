@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=12 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="3_btgvy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="6_gar54"]
 [ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin_10.tscn" id="6_r04ev"]
 [ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://enemy.tscn" id="8_v6n06"]
+[ext_resource type="PackedScene" uid="uid://iyui2mtn03bo" path="res://scenes/ui.tscn" id="9_4eqlh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wxyv3"]
 vertices = PackedVector2Array(473.359, -438.062, 505.617, 436.891, -476.133, 427.094, -487.859, -444.922)
@@ -18,7 +19,13 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -455, 483, -448, 
 
 [node name="Node2D" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("9_4eqlh")]
+unique_name_in_owner = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.25, 1.25)
 
 [node name="Enemy" parent="." instance=ExtResource("8_v6n06")]
 unique_name_in_owner = true
@@ -34,7 +41,8 @@ navigation_polygon = SubResource("NavigationPolygon_wxyv3")
 position = Vector2(-1, 276)
 script = ExtResource("1_xeaao")
 start_x_direction = Vector2(0, 0)
-start_y_direction = Vector2(0, 0)
+start_y_direction = Vector2(-1, -1)
+spawn_radius = 0.0
 spawn_count = 1
 
 [node name="CheeseSpawner" type="Node2D" parent="Spawners"]

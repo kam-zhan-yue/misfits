@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d30s6mf8w0b8k"]
+
+[ext_resource type="FontFile" uid="uid://o18g546uue41" path="res://assets/fonts/PixelifySans.ttf" id="1_wuqiy"]
+
+[resource]
+default_font = ExtResource("1_wuqiy")
+default_font_size = 32

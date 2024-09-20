@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci3v38lw1jm0t"
-path="res://.godot/imported/cheese.aseprite-27478e9602a0afc4760b3bdb1729a2c6.ctex"
+path="res://.godot/imported/cheese.aseprite-c8da4c1f7d01ce323ebe6e292844c1d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://aseprite/cheese.aseprite"
-dest_files=["res://.godot/imported/cheese.aseprite-27478e9602a0afc4760b3bdb1729a2c6.ctex"]
+source_file="res://assets/aseprite/cheese.aseprite"
+dest_files=["res://.godot/imported/cheese.aseprite-c8da4c1f7d01ce323ebe6e292844c1d6.ctex"]
 
 [params]
 

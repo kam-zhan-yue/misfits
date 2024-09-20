@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://coxw7p67mhj5o"]
 
 [ext_resource type="Script" path="res://scripts/entities/power_up.gd" id="1_aq8q1"]
-[ext_resource type="Texture2D" uid="uid://bhsl1ynbnw6ac" path="res://aseprite/coin_10-Sheet.png" id="2_r38lk"]
+[ext_resource type="Texture2D" uid="uid://bhsl1ynbnw6ac" path="res://assets/aseprite/coin_10-Sheet.png" id="2_r38lk"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="3_f2pfv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ro0f"]
