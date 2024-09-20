@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=9 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
 [ext_resource type="PackedScene" uid="uid://iqjijkohmmgs" path="res://scenes/boid.tscn" id="2_jnmx8"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://scripts/entities/cheese_spawner.gd" id="3_knbe3"]
 [ext_resource type="PackedScene" uid="uid://x3aqdcb3njho" path="res://scenes/cheese.tscn" id="4_wygo1"]
 [ext_resource type="Script" path="res://scripts/globals/game_manager.gd" id="4_xhb8v"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="6_gar54"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj6jc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gneex"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -33,12 +34,17 @@ script = ExtResource("3_btgvy")
 
 [node name="Walls" type="Node2D" parent="."]
 
-[node name="Area2D2" type="Area2D" parent="Walls"]
+[node name="Wall" type="Node2D" parent="Walls"]
+rotation = 0.941021
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D2"]
-rotation = -0.576648
-scale = Vector2(3.92, 5.88)
-shape = SubResource("RectangleShape2D_vj6jc")
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall"]
+texture = ExtResource("6_gar54")
+
+[node name="Area2D" type="Area2D" parent="Walls/Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall/Area2D"]
+scale = Vector2(6.36, 6.28)
+shape = SubResource("RectangleShape2D_gneex")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("4_xhb8v")

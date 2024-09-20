@@ -92,7 +92,7 @@ func steer_towards(target: Vector2, use_idle: bool = false) -> Vector2:
 		return v.clampf(-BoidManager.SETTINGS.max_steer_force, BoidManager.SETTINGS.max_steer_force)
 
 func update_rotation() -> void:
-	var angle = atan2(velocity.y, velocity.x) + 90.0
+	var angle = atan2(velocity.y, velocity.x) + PI * 0.5
 	if sprite:
 		sprite.rotation = angle
 		sprite.flip_v = Global.flip_v(angle)
@@ -104,7 +104,7 @@ func get_obstacle_force() -> Vector2:
 	var obstacle_force := Vector2.ZERO
 	for area in overlap:
 		var difference := area.global_position - global_position / 100.0
-		obstacle_force -= difference.normalized() / pow(difference.length_squared(), 5)
+		obstacle_force -= difference.normalized() / difference.length_squared()
 	return obstacle_force
 
 func uninit() -> void:
