@@ -7,15 +7,16 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
 
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="BoidSpawner" type="Node2D" parent="Spawners"]
+position = Vector2(-1, 276)
 script = ExtResource("1_xeaao")
 boid_scene = ExtResource("2_jnmx8")
 start_x_direction = Vector2(0, 0)
 start_y_direction = Vector2(0, 0)
+spawn_count = 100
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("3_btgvy")

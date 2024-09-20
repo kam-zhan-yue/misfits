@@ -24,6 +24,12 @@ aseprite_executable_path="/Applications/Aseprite.app/Contents/MacOS/aseprite"
 BoidManager="*res://scripts/boids/boid_manager.gd"
 Global="*res://scripts/globals/global.gd"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
