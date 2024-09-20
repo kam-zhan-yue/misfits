@@ -4,9 +4,12 @@
 
 [resource]
 script = ExtResource("1_0qoy6")
+height = 400.0
+width = 400.0
 idle_speed = 10.0
 idle_separation_weight = 5.0
-idle_cohesion_weight = 6.0
+idle_cohesion_weight = 5.0
+idle_steer_force = 10.0
 min_speed = 100.0
 max_speed = 250.0
 max_steer_force = 200.0
@@ -16,7 +19,7 @@ input_weight = 5.0
 separation_weight = 2.0
 alignment_weight = 3.0
 cohesion_weight = 3.0
-obstacle_weight = 1.0
+obstacle_weight = 10.0
 avoidance_weight = 1.0
 separation = true
 alignment = true

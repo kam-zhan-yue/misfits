@@ -16,6 +16,7 @@ func _process(_delta: float) -> void:
 	for boid in boids:
 		if boid:
 			simulate(boid)
+			bound(boid)
 
 func simulate(boid: Boid) -> void:
 	var nearby := get_nearby_boids(boid)
@@ -66,6 +67,19 @@ func get_cohesion_force(b2: Boid) -> Vector2:
 
 func readjust_cohesion(total: Vector2, original_pos: Vector2, nearby: int) -> Vector2:
 	return (total / nearby) - original_pos
+
+func bound(b: Boid) -> void:
+	var boid_position := b.global_position
+	if boid_position.x > SETTINGS.width:
+		boid_position.x = -SETTINGS.width
+	elif boid_position.x < -SETTINGS.width:
+		boid_position.x = SETTINGS.width
+	
+	if boid_position.y > SETTINGS.height:
+		boid_position.y = -SETTINGS.height
+	elif boid_position.y < -SETTINGS.height:
+		boid_position.y = SETTINGS.height
+	b.global_position = boid_position
 
 func restart() -> void:
 	for b in boids:

@@ -54,9 +54,9 @@ func rat_speed(velocity: Vector2) -> float:
 	return clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
 
 func idle() -> void:
-	var separation_force := steer_towards(separation)
-	var alignment_force := steer_towards(alignment)
-	var cohesion_force := steer_towards(cohesion)
+	var separation_force := steer_towards(separation, true)
+	var alignment_force := steer_towards(alignment, true)
+	var cohesion_force := steer_towards(cohesion, true)
 	var obstacle_force := steer_towards(get_obstacle_force())
 	var acceleration := Vector2.ZERO
 	acceleration += separation_force * BoidManager.SETTINGS.idle_separation_weight
@@ -82,11 +82,14 @@ func rat(input: Vector2) -> void:
 	var final_speed = clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
 	velocity = velocity.normalized() * final_speed
 
-func steer_towards(target: Vector2) -> Vector2:
+func steer_towards(target: Vector2, idle: bool = false) -> Vector2:
 	if target == Vector2.ZERO:
 		return Vector2.ZERO
 	var v := target.normalized() * BoidManager.SETTINGS.max_speed - velocity
-	return v.clampf(-BoidManager.SETTINGS.max_steer_force, BoidManager.SETTINGS.max_steer_force)
+	if idle:
+		return v.clampf(-BoidManager.SETTINGS.idle_steer_force, BoidManager.SETTINGS.idle_steer_force)
+	else:
+		return v.clampf(-BoidManager.SETTINGS.max_steer_force, BoidManager.SETTINGS.max_steer_force)
 
 func update_rotation() -> void:
 	var angle = atan2(velocity.y, velocity.x) + 90.0
@@ -100,8 +103,8 @@ func get_obstacle_force() -> Vector2:
 	var overlap := obstacle_view.get_overlapping_areas()
 	var obstacle_force := Vector2.ZERO
 	for area in overlap:
-		var difference := area.global_position - global_position
-		obstacle_force -= difference.normalized() / difference.length_squared()
+		var difference := area.global_position - global_position / 100.0
+		obstacle_force -= difference.normalized() / pow(difference.length_squared(), 5)
 	return obstacle_force
 
 func uninit() -> void:

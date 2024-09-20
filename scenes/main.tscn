@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=5 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
 [ext_resource type="PackedScene" uid="uid://iqjijkohmmgs" path="res://scenes/boid.tscn" id="2_jnmx8"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_btgvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj6jc"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,7 +18,15 @@ script = ExtResource("1_xeaao")
 boid_scene = ExtResource("2_jnmx8")
 start_x_direction = Vector2(0, 0)
 start_y_direction = Vector2(0, 0)
-spawn_count = 100
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("3_btgvy")
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Area2D2" type="Area2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D2"]
+rotation = -0.576648
+scale = Vector2(3.92, 5.88)
+shape = SubResource("RectangleShape2D_vj6jc")
