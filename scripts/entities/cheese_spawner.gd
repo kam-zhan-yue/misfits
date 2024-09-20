@@ -23,7 +23,7 @@ func start() -> void:
 
 func spawn_cheese() -> void:
 	var cheese := cheese_scene.instantiate() as Cheese
-	add_child(cheese)
+	self.call_deferred("add_child", cheese)
 	var random_x = randf_range(-BoidManager.SETTINGS.width, BoidManager.SETTINGS.width)
 	var random_y = randf_range(-BoidManager.SETTINGS.height, BoidManager.SETTINGS.height)
 	cheese.global_position = Vector2(random_x, random_y)
@@ -33,7 +33,7 @@ func spawn_power_up() -> void:
 	if state.spawnable + len(BoidManager.boids) >= MAX:
 		return
 	var coin := coin_10_scene.instantiate() as PowerUp
-	add_child(coin)
+	self.call_deferred("add_child", coin)
 	var random_x := randf_range(-BoidManager.SETTINGS.width, BoidManager.SETTINGS.width)
 	var random_y := randf_range(-BoidManager.SETTINGS.height, BoidManager.SETTINGS.height)
 	coin.global_position = Vector2(random_x, random_y)

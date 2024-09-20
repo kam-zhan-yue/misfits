@@ -27,6 +27,7 @@ func _on_tutorial(key: String) -> void:
 		show_popup()
 		set_text(TUTORIALS[key])
 		if key == "COIN":
+			state.start()
 			await Global.seconds(5.0)
 			hide_popup()
 
