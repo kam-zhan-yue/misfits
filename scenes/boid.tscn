@@ -10,6 +10,7 @@ radius = 171.143
 script = ExtResource("1_1pm5u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("2_0mgie")
 
 [node name="ObstacleArea" type="Area2D" parent="."]

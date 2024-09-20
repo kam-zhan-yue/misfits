@@ -1,6 +1,11 @@
 class_name BoidSettings
 extends Resource
 
+@export_subgroup("Idle Settings")
+@export var idle_speed := 10.0
+@export var idle_separation_weight := 5.0
+@export var idle_cohesion_weight := 5.0
+
 @export_subgroup("Speed")
 @export var min_speed := 70.0
 @export var max_speed := 200.0

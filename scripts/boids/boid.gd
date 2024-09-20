@@ -12,7 +12,7 @@ var group: int
 
 @export var using_anim := false
 @onready var obstacle_view := %ObstacleArea as Area2D
-var sprite: Sprite2D
+@onready var sprite := %Sprite2D as Sprite2D
 var animated_sprite_2d: AnimatedSprite2D
 
 signal on_uninit
@@ -40,6 +40,33 @@ func init(boid_group: int) -> void:
 	BoidManager.init(self)
 
 func simulate(input: Vector2) -> void:
+	if input == Vector2.ZERO:
+		idle()
+	else:
+		rat(input)
+	global_position += velocity * get_process_delta_time()
+	update_rotation()
+
+func idle_speed() -> float:
+	return BoidManager.SETTINGS.idle_speed
+
+func rat_speed(velocity: Vector2) -> float:
+	return clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
+
+func idle() -> void:
+	var separation_force := steer_towards(separation)
+	var alignment_force := steer_towards(alignment)
+	var cohesion_force := steer_towards(cohesion)
+	var obstacle_force := steer_towards(get_obstacle_force())
+	var acceleration := Vector2.ZERO
+	acceleration += separation_force * BoidManager.SETTINGS.idle_separation_weight
+	acceleration += alignment_force * BoidManager.SETTINGS.alignment_weight
+	acceleration += cohesion_force * BoidManager.SETTINGS.idle_cohesion_weight
+	acceleration += obstacle_force * BoidManager.SETTINGS.obstacle_weight
+	velocity += acceleration * get_process_delta_time()
+	velocity = velocity.normalized() * BoidManager.SETTINGS.idle_speed
+
+func rat(input: Vector2) -> void:
 	var input_force := steer_towards(input)
 	var separation_force := steer_towards(separation)
 	var alignment_force := steer_towards(alignment)
@@ -51,14 +78,9 @@ func simulate(input: Vector2) -> void:
 	acceleration += alignment_force * BoidManager.SETTINGS.alignment_weight
 	acceleration += cohesion_force * BoidManager.SETTINGS.cohesion_weight
 	acceleration += obstacle_force * BoidManager.SETTINGS.obstacle_weight
-	# Update the velocity by all forces
 	velocity += acceleration * get_process_delta_time()
-	
-	# Clamp the velocity to a min and max speed
-	var final_speed := clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
+	var final_speed = clampf(velocity.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
 	velocity = velocity.normalized() * final_speed
-	global_position += velocity * get_process_delta_time()
-	update_rotation()
 
 func steer_towards(target: Vector2) -> Vector2:
 	if target == Vector2.ZERO:
@@ -67,7 +89,7 @@ func steer_towards(target: Vector2) -> Vector2:
 	return v.clampf(-BoidManager.SETTINGS.max_steer_force, BoidManager.SETTINGS.max_steer_force)
 
 func update_rotation() -> void:
-	var angle = atan2(velocity.y, velocity.x)
+	var angle = atan2(velocity.y, velocity.x) + 90.0
 	if sprite:
 		sprite.rotation = angle
 		sprite.flip_v = Global.flip_v(angle)
