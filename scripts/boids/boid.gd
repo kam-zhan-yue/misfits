@@ -27,15 +27,9 @@ func _ready() -> void:
 		animated_sprite_2d.frame = random_frame
 		animated_sprite_2d.play("default")
 
-func can_see(other: Boid) -> bool:
-	if other.group != group:
-		return false
-	var difference = (other.global_position - global_position).length()
-	return difference <= BoidManager.SETTINGS.vision_radius
-
 func init(boid_group: int) -> void:
 	group = boid_group
-	var middle := (BoidManager.SETTINGS.min_speed + BoidManager.SETTINGS.max_speed) * 0.5
+	var middle = (BoidManager.SETTINGS.min_speed + BoidManager.SETTINGS.max_speed) * 0.5
 	velocity = middle * direction.normalized()
 	BoidManager.init(self)
 
@@ -85,7 +79,7 @@ func rat(input: Vector2) -> void:
 func steer_towards(target: Vector2, use_idle: bool = false) -> Vector2:
 	if target == Vector2.ZERO:
 		return Vector2.ZERO
-	var v := target.normalized() * BoidManager.SETTINGS.max_speed - velocity
+	var v = target.normalized() * BoidManager.SETTINGS.max_speed - velocity
 	if use_idle:
 		return v.clampf(-BoidManager.SETTINGS.idle_steer_force, BoidManager.SETTINGS.idle_steer_force)
 	else:

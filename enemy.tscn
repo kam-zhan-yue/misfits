@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccixhix1x28n7"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_tbi2x"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="2_aml78"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_tbi2x")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_aml78")
