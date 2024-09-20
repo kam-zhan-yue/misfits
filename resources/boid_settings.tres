@@ -9,6 +9,7 @@ max_speed = 100.0
 max_steer_force = 100.0
 vision_radius = 100.0
 obstacle_vision_radius = 50.0
+input_weight = 5.0
 separation_weight = 2.0
 alignment_weight = 3.0
 cohesion_weight = 3.0

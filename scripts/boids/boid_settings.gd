@@ -11,6 +11,7 @@ extends Resource
 @export var obstacle_vision_radius := 50.0
 
 @export_subgroup("Weights")
+@export var input_weight := 1.0
 @export var separation_weight := 1.0
 @export var alignment_weight := 1.0
 @export var cohesion_weight := 1.0

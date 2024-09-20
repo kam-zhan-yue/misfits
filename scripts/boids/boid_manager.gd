@@ -4,6 +4,8 @@ const SETTINGS = preload("res://resources/boid_settings.tres")
 
 var boids: Array[Boid] = []
 
+var input: Vector2
+
 func init(boid: Boid) -> void:
 	boids.push_back(boid)
 
@@ -18,11 +20,10 @@ func _process(_delta: float) -> void:
 func simulate(boid: Boid) -> void:
 	var nearby := get_nearby_boids(boid)
 	simulate_forces(boid, nearby)
-	boid.simulate()
+	boid.simulate(input)
 	
-func move(speed: Vector2) -> void:
-	print('moving to ', speed)
-	pass
+func move(player_input: Vector2) -> void:
+	input = player_input
 
 func get_nearby_boids(boid: Boid) -> Array[Boid]:
 	var nearby: Array[Boid] = []
