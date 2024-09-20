@@ -1,6 +1,7 @@
 extends Node
 
 const SETTINGS = preload("res://resources/boid_settings.tres")
+const BOID = preload("res://scenes/boid.tscn")
 
 var boids: Array[Boid] = []
 
@@ -17,6 +18,13 @@ func _process(_delta: float) -> void:
 		if boid:
 			simulate(boid)
 			bound(boid)
+
+func spawn_boid(position: Vector2, direction: Vector2) -> void:
+	var boid := BOID.instantiate() as Boid
+	add_child(boid)
+	boid.global_position = position
+	boid.direction = direction
+	boid.init(1)
 
 func simulate(boid: Boid) -> void:
 	var nearby := get_nearby_boids(boid)
@@ -36,12 +44,12 @@ func get_nearby_boids(boid: Boid) -> Array[Boid]:
 	return nearby
 
 
-func get_nearest(pos: Vector2, range: float) -> Array[Vector2]:
+func get_nearest(pos: Vector2, range_check: float) -> Array[Vector2]:
 	var nearest: Array[Vector2] = []
 	for b in boids:
 		var adjusted := get_relative_position(pos, b.global_position)
 		var distance := (adjusted - pos).length()
-		if distance <= range:
+		if distance <= range_check:
 			if len(nearest) == 0:
 				nearest.append(adjusted)
 			elif distance < nearest[0].length():

@@ -5,6 +5,7 @@ var player: Player
 var cheeses := 0
 
 signal on_cheese(int)
+signal on_power_up(int)
 
 func _init(p: Player = null) -> void:
 	player = p
@@ -13,3 +14,6 @@ func _init(p: Player = null) -> void:
 func get_cheese() -> void:
 	cheeses += 1
 	on_cheese.emit(cheeses)
+
+func get_power_up(value: int) -> void:
+	on_power_up.emit(value)

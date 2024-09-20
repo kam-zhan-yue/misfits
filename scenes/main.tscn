@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
-[ext_resource type="PackedScene" uid="uid://iqjijkohmmgs" path="res://scenes/boid.tscn" id="2_jnmx8"]
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="3_btgvy"]
 [ext_resource type="Script" path="res://scripts/entities/cheese_spawner.gd" id="3_knbe3"]
 [ext_resource type="PackedScene" uid="uid://x3aqdcb3njho" path="res://scenes/cheese.tscn" id="4_wygo1"]
 [ext_resource type="Script" path="res://scripts/globals/game_manager.gd" id="4_xhb8v"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="6_gar54"]
+[ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin_10.tscn" id="6_r04ev"]
 [ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://enemy.tscn" id="8_v6n06"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wxyv3"]
@@ -33,7 +33,6 @@ navigation_polygon = SubResource("NavigationPolygon_wxyv3")
 [node name="BoidSpawner" type="Node2D" parent="Spawners"]
 position = Vector2(-1, 276)
 script = ExtResource("1_xeaao")
-boid_scene = ExtResource("2_jnmx8")
 start_x_direction = Vector2(0, 0)
 start_y_direction = Vector2(0, 0)
 spawn_count = 1
@@ -42,6 +41,7 @@ spawn_count = 1
 unique_name_in_owner = true
 script = ExtResource("3_knbe3")
 cheese_scene = ExtResource("4_wygo1")
+coin_10_scene = ExtResource("6_r04ev")
 
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true

@@ -2,10 +2,15 @@ class_name Enemy
 extends Node2D
 
 @export var speed := 100.0
-@export var range := 300.0
+@export var vision_range := 300.0
 @onready var nav := $NavigationAgent2D as NavigationAgent2D
 
 var state: GameState
+
+func _ready():
+	set_physics_process(false)
+	await get_tree().physics_frame
+	set_physics_process(true)
 
 func init(game_state: GameState) -> void:
 	state = game_state
@@ -16,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	
 	BoidManager.bound(self)
 	
-	var nearest := BoidManager.get_nearest(global_position, range)
+	var nearest := BoidManager.get_nearest(global_position, vision_range)
 	if len(nearest) == 0:
 		return
 	
@@ -24,3 +29,8 @@ func _physics_process(delta: float) -> void:
 	nav.target_position = target_pos
 	var direction := (nav.get_next_path_position() - global_position).normalized()
 	global_position += direction * speed * delta
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Boid:
+		(area.get_parent() as Boid).uninit()

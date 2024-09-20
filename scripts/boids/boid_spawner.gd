@@ -1,7 +1,6 @@
 class_name BoidSpawner
 extends Node2D
 
-@export var boid_scene: PackedScene
 @export var start_x_direction := Vector2.ONE
 @export var start_y_direction := Vector2.ONE
 @export var spawn_radius := 100.0
@@ -25,10 +24,8 @@ func spawn_circle() -> void:
 		spawn_boid(spawn_point)
 
 func spawn_boid(point: Vector2) -> void:
-		var boid := boid_scene.instantiate() as Boid
-		add_child(boid)
-		boid.global_position = global_position + point
-		var random_x = randf_range(start_x_direction.x, start_x_direction.y)
-		var random_y = randf_range(start_y_direction.x, start_y_direction.y)
-		boid.direction = Vector2(random_x, random_y)
-		boid.init(1)
+	var random_x := randf_range(start_x_direction.x, start_x_direction.y)
+	var random_y := randf_range(start_y_direction.x, start_y_direction.y)
+	var random_direction := Vector2(random_x, random_y)
+	var final_pos := global_position + point
+	BoidManager.spawn_boid(final_pos, random_direction)
