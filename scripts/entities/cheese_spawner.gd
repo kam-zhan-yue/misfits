@@ -2,18 +2,17 @@ class_name CheeseSpawner
 extends Node2D
 
 @export var cheese_scene: PackedScene
-@export var coin_10_scene: PackedScene
+@export var coin_scene: PackedScene
 
 const MAX = 100
-var total_rats := 0
 var state: GameState
 
 func init(game_state: GameState) -> void:
 	state = game_state
-	var coin := coin_10_scene.instantiate() as PowerUp
+	var coin := coin_scene.instantiate() as PowerUp
 	add_child(coin)
 	coin.global_position = $InitialCoin.global_position
-	coin.init(state, 100)
+	coin.init(state, 50)
 
 func start() -> void:
 	while(true):
@@ -32,7 +31,7 @@ func spawn_cheese() -> void:
 func spawn_power_up() -> void:
 	if state.spawnable + len(BoidManager.boids) >= MAX:
 		return
-	var coin := coin_10_scene.instantiate() as PowerUp
+	var coin := coin_scene.instantiate() as PowerUp
 	self.call_deferred("add_child", coin)
 	var random_x := randf_range(-BoidManager.SETTINGS.width, BoidManager.SETTINGS.width)
 	var random_y := randf_range(-BoidManager.SETTINGS.height, BoidManager.SETTINGS.height)

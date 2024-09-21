@@ -29,8 +29,8 @@ func _ready() -> void:
 
 func init(boid_group: int) -> void:
 	group = boid_group
-	var middle = (BoidManager.SETTINGS.min_speed + BoidManager.SETTINGS.max_speed) * 0.5
-	velocity = middle * direction.normalized()
+	#var middle = (BoidManager.SETTINGS.min_speed + BoidManager.SETTINGS.max_speed) * 0.5
+	#velocity = middle * direction.normalized()
 	BoidManager.init(self)
 
 func simulate(input: Vector2) -> void:
@@ -39,7 +39,8 @@ func simulate(input: Vector2) -> void:
 	else:
 		rat(input)
 	global_position += velocity * get_process_delta_time()
-	update_rotation()
+	if input != Vector2.ZERO:
+		update_rotation()
 
 func idle_speed() -> float:
 	return BoidManager.SETTINGS.idle_speed
@@ -48,17 +49,20 @@ func rat_speed(v: Vector2) -> float:
 	return clampf(v.length(), BoidManager.SETTINGS.min_speed, BoidManager.SETTINGS.max_speed)
 
 func idle() -> void:
+	var stabilise_force := steer_towards(-velocity)
 	var separation_force := steer_towards(separation, true)
 	var alignment_force := steer_towards(alignment, true)
 	var cohesion_force := steer_towards(cohesion, true)
 	var obstacle_force := steer_towards(get_obstacle_force())
 	var acceleration := Vector2.ZERO
+	acceleration += stabilise_force
 	acceleration += separation_force * BoidManager.SETTINGS.idle_separation_weight
 	acceleration += alignment_force * BoidManager.SETTINGS.alignment_weight
 	acceleration += cohesion_force * BoidManager.SETTINGS.idle_cohesion_weight
 	acceleration += obstacle_force * BoidManager.SETTINGS.obstacle_weight
 	velocity += acceleration * get_process_delta_time()
-	velocity = velocity.normalized() * BoidManager.SETTINGS.idle_speed
+	var final_speed = clampf(velocity.length(), 0, BoidManager.SETTINGS.idle_speed)
+	velocity = velocity.normalized() * final_speed
 
 func rat(input: Vector2) -> void:
 	var input_force := steer_towards(input)

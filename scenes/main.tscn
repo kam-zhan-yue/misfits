@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://scripts/entities/cheese_spawner.gd" id="3_knbe3"]
 [ext_resource type="PackedScene" uid="uid://x3aqdcb3njho" path="res://scenes/cheese.tscn" id="4_wygo1"]
 [ext_resource type="Script" path="res://scripts/globals/game_manager.gd" id="4_xhb8v"]
+[ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin.tscn" id="6_8wels"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="6_gar54"]
-[ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin_10.tscn" id="6_r04ev"]
 [ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://scenes/enemy.tscn" id="8_v6n06"]
 [ext_resource type="PackedScene" uid="uid://iyui2mtn03bo" path="res://scenes/ui/ui.tscn" id="9_4eqlh"]
 
@@ -43,7 +43,7 @@ spawn_count = 1
 unique_name_in_owner = true
 script = ExtResource("3_knbe3")
 cheese_scene = ExtResource("4_wygo1")
-coin_10_scene = ExtResource("6_r04ev")
+coin_scene = ExtResource("6_8wels")
 
 [node name="InitialCoin" type="Marker2D" parent="Spawners/CheeseSpawner"]
 position = Vector2(0, 171)
