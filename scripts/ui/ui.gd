@@ -6,14 +6,17 @@ var started := false
 
 @onready var start_popup := %StartPopup as StartPopup
 @onready var tutorial_popup := %TutorialPopup as TutorialPopup
+@onready var cheese_popup := %CheesePopup as CheesePopup
 
 func _ready() -> void:
 	start_popup.show_popup()
 	tutorial_popup.hide_popup()
+	cheese_popup.hide_popup()
 
 func init(game_state: GameState) -> void:
 	state = game_state
 	tutorial_popup.init(state)
+	cheese_popup.init(state)
 
 func _input(_event: InputEvent) -> void:
 	if started: return

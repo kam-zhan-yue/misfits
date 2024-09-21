@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://iyui2mtn03bo"]
+[gd_scene load_steps=5 format=3 uid="uid://iyui2mtn03bo"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_npcuu"]
 [ext_resource type="PackedScene" uid="uid://dmfuuxyvr4but" path="res://scenes/ui/start_popup.tscn" id="2_1e1ya"]
 [ext_resource type="PackedScene" uid="uid://4brbimve40dc" path="res://scenes/ui/tutorial_popup.tscn" id="3_7skco"]
+[ext_resource type="PackedScene" uid="uid://c0jeb0jfxxw2x" path="res://scenes/ui/cheese_popup.tscn" id="4_t1ucx"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -18,5 +19,9 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [node name="TutorialPopup" parent="." instance=ExtResource("3_7skco")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="CheesePopup" parent="." instance=ExtResource("4_t1ucx")]
 unique_name_in_owner = true
 layout_mode = 1

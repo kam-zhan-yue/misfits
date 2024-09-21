@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://scripts/globals/game_manager.gd" id="4_xhb8v"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="6_gar54"]
 [ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin_10.tscn" id="6_r04ev"]
-[ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://enemy.tscn" id="8_v6n06"]
-[ext_resource type="PackedScene" uid="uid://iyui2mtn03bo" path="res://scenes/ui.tscn" id="9_4eqlh"]
+[ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://scenes/enemy.tscn" id="8_v6n06"]
+[ext_resource type="PackedScene" uid="uid://iyui2mtn03bo" path="res://scenes/ui/ui.tscn" id="9_4eqlh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wxyv3"]
 vertices = PackedVector2Array(473.359, -438.062, 505.617, 436.891, -476.133, 427.094, -487.859, -444.922)

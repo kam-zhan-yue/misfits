@@ -15,12 +15,16 @@ var state: GameState
 func init(game_state: GameState) -> void:
 	state = game_state
 	state.on_tutorial.connect(_on_tutorial)
+	state.on_cheese.connect(_on_cheese)
 
 func show_popup() -> void:
 	Global.set_active(text)
 
 func hide_popup() -> void:
 	Global.set_inactive(text)
+
+func _on_cheese() -> void:
+	hide_popup()
 	
 func _on_tutorial(key: String) -> void:
 	if key in TUTORIALS:
