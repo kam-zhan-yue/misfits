@@ -16,7 +16,6 @@ func init_game() -> void:
 	game_state = GameState.new(player, self)
 	game_state.on_start_tutorial.connect(_on_start_tutorial)
 	game_state.on_start.connect(_on_start_game)
-	game_state.on_cheese.connect(_on_cheese)
 	cheese_spawner.init(game_state)
 	enemy.init(game_state)
 	ui.init(game_state)
@@ -31,6 +30,3 @@ func _on_start_game() -> void:
 	BoidManager.start()
 	cheese_spawner.start()
 	camera_manager.zoom_to(2)
-	
-func _on_cheese(cheeses: int) -> void:
-	print("Cheeses: ", cheeses)

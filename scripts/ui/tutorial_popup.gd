@@ -23,7 +23,7 @@ func show_popup() -> void:
 func hide_popup() -> void:
 	Global.set_inactive(text)
 
-func _on_cheese() -> void:
+func _on_cheese(_value: int) -> void:
 	hide_popup()
 	
 func _on_tutorial(key: String) -> void:

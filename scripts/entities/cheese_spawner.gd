@@ -9,6 +9,8 @@ var state: GameState
 
 func init(game_state: GameState) -> void:
 	state = game_state
+	state.on_cheese.connect(_on_cheese)
+	state.on_start.connect(_on_start)
 	var coin := coin_scene.instantiate() as PowerUp
 	add_child(coin)
 	coin.global_position = $InitialCoin.global_position
@@ -16,9 +18,15 @@ func init(game_state: GameState) -> void:
 
 func start() -> void:
 	while(true):
-		spawn_cheese()
 		spawn_power_up()
-		await Global.seconds(1.0)
+		await Global.seconds(10.0)
+
+func _on_start() -> void:
+	for i in range(5):
+		spawn_cheese()
+
+func _on_cheese() -> void:
+	spawn_cheese()
 
 func spawn_cheese() -> void:
 	var cheese := cheese_scene.instantiate() as Cheese
