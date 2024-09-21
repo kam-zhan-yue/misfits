@@ -5,6 +5,7 @@ var player: Player
 var root: Node2D
 var cheeses := 0
 var spawnable := 0
+var in_tutorial := false
 
 signal on_cheese(int)
 signal on_power_up(int)
@@ -20,9 +21,11 @@ func _init(p: Player = null, r: Node2D = null) -> void:
 	cheeses = 0
 
 func tutorial() -> void:
+	in_tutorial = true
 	on_start_tutorial.emit()
 
 func start() -> void:
+	in_tutorial = false
 	on_start.emit()
 
 func get_cheese() -> void:
