@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=12 format=4 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/initialiser.gd" id="1_cysgk"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
@@ -8,17 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://x3aqdcb3njho" path="res://scenes/cheese.tscn" id="4_wygo1"]
 [ext_resource type="Script" path="res://scripts/globals/game_manager.gd" id="4_xhb8v"]
 [ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin.tscn" id="6_8wels"]
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="6_gar54"]
 [ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://scenes/enemy.tscn" id="8_v6n06"]
 [ext_resource type="PackedScene" uid="uid://iyui2mtn03bo" path="res://scenes/ui/ui.tscn" id="9_4eqlh"]
 [ext_resource type="TileSet" uid="uid://bx3atefqxgd88" path="res://resources/tilemap.tres" id="12_4tdxg"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_wxyv3"]
-vertices = PackedVector2Array(473.359, -438.062, 505.617, 436.891, -476.133, 427.094, -487.859, -444.922)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-498, -455, 483, -448, 516, 447, -486, 437)])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gneex"]
 
 [node name="Main" type="Node2D"]
 
@@ -48,7 +40,7 @@ unique_name_in_owner = true
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="PlayerSpawn" type="Marker2D" parent="Spawners"]
-position = Vector2(-1, 351)
+position = Vector2(97, 192)
 script = ExtResource("1_xeaao")
 start_x_direction = Vector2(0, 0)
 start_y_direction = Vector2(-1, -1)
@@ -79,26 +71,7 @@ script = ExtResource("3_d2h5e")
 [node name="Enemy" parent="." instance=ExtResource("8_v6n06")]
 unique_name_in_owner = true
 position = Vector2(-154, -273)
-scale = Vector2(0.5, 0.5)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_wxyv3")
-
-[node name="Walls" type="Node2D" parent="."]
-visible = false
-
-[node name="Wall" type="Node2D" parent="Walls"]
-rotation = 0.862562
-
-[node name="Sprite2D" type="Sprite2D" parent="Walls/Wall"]
-texture = ExtResource("6_gar54")
-
-[node name="Area2D" type="Area2D" parent="Walls/Wall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall/Area2D"]
-scale = Vector2(6.36, 6.28)
-shape = SubResource("RectangleShape2D_gneex")
+vision_range = 10.0
 
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -106,3 +79,8 @@ script = ExtResource("3_btgvy")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("4_xhb8v")
+
+[node name="WallCollisions" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallCollisions"]
+polygon = PackedVector2Array(32, 384, 32, 257, 40, 242, 109, 241, 118, 437, -105, 434, -106, 241, -41, 241, -33, 255, -33, 384)

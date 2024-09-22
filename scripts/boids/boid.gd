@@ -98,6 +98,7 @@ func update_rotation() -> void:
 func get_obstacle_force() -> Vector2:
 	if not obstacle_view.has_overlapping_areas():
 		return Vector2.ZERO
+	print("areas")
 	var overlap := obstacle_view.get_overlapping_areas()
 	var obstacle_force := Vector2.ZERO
 	for area in overlap:
