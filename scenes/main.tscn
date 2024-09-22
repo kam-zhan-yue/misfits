@@ -79,8 +79,3 @@ script = ExtResource("3_btgvy")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("4_xhb8v")
-
-[node name="WallCollisions" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallCollisions"]
-polygon = PackedVector2Array(32, 384, 32, 257, 40, 242, 109, 241, 118, 437, -105, 434, -106, 241, -41, 241, -33, 255, -33, 384)

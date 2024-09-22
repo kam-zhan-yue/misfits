@@ -18,7 +18,8 @@ extends Resource
 
 @export_subgroup("Vision")
 @export var vision_radius := 10.0
-@export var obstacle_vision_radius := 50.0
+@export var obstacle_vision_radius := 32.0
+@export var separation_radius := 5.0
 
 @export_subgroup("Weights")
 @export var input_weight := 1.0

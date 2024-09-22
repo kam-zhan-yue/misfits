@@ -1,6 +1,8 @@
 class_name Boid
 extends Node2D
 
+const MAX_STEPS = 36
+
 var velocity := Vector2.ZERO
 var direction := Vector2.UP
 
@@ -11,7 +13,6 @@ var obstacle: Vector2
 var group: int
 
 @export var using_anim := false
-@onready var obstacle_view := %ObstacleArea as Area2D
 @onready var sprite := %Sprite2D as Sprite2D
 var animated_sprite_2d: AnimatedSprite2D
 
@@ -96,15 +97,25 @@ func update_rotation() -> void:
 		#sprite.flip_v = Global.flip_v(angle)
 
 func get_obstacle_force() -> Vector2:
-	if not obstacle_view.has_overlapping_areas():
-		return Vector2.ZERO
-	print("areas")
-	var overlap := obstacle_view.get_overlapping_areas()
-	var obstacle_force := Vector2.ZERO
-	for area in overlap:
-		var difference := area.global_position - global_position / 100.0
-		obstacle_force -= difference.normalized() / difference.length_squared()
-	return obstacle_force
+	var space_state := get_world_2d().direct_space_state
+	var ray_length := BoidManager.SETTINGS.obstacle_vision_radius
+	var shape_rid := PhysicsServer2D.circle_shape_create()
+	var radius := 16.0
+	PhysicsServer2D.shape_set_data(shape_rid, radius)
+	var params := PhysicsShapeQueryParameters2D.new()
+	params.collision_mask = pow(2, 1-1)
+	params.shape_rid = shape_rid
+	params.transform = get_global_transform()
+	var rest_info := space_state.get_rest_info(params)
+	if rest_info:
+		#print(rest_info.collider_id)
+		#print(instance_from_id(rest_info.collider_id))
+		return rest_info.normal
+	
+	# Release the shape when done with physics queries.
+	PhysicsServer2D.free_rid(shape_rid)
+	
+	return Vector2.ZERO
 
 func uninit() -> void:
 	BoidManager.uninit(self)

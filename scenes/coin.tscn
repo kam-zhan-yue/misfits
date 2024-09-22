@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_rdigs")
 script = ExtResource("3_1nwn6")
 start_x_direction = Vector2(0, 0)
 start_y_direction = Vector2(0, 0)
-spawn_radius = 50.0
+spawn_radius = 32.0
 spawn_count = 10
 spawn_on_ready = false
 

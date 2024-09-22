@@ -83,6 +83,8 @@ func simulate_forces(boid: Boid, nearby: Array[Boid]) -> void:
 
 func get_separation_force(b1: Boid, b2: Boid) -> Vector2:
 	var difference := b2.global_position - b1.global_position
+	if difference.length() > SETTINGS.separation_radius:
+		return Vector2.ZERO
 	return difference.normalized() / difference.length_squared()
 
 
