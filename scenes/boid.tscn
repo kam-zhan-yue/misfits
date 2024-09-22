@@ -15,6 +15,7 @@ script = ExtResource("1_1pm5u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+z_index = 10
 texture = ExtResource("2_0mgie")
 
 [node name="ObstacleArea" type="Area2D" parent="."]

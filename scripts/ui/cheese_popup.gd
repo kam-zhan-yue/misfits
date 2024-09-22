@@ -37,12 +37,12 @@ func init(game_state: GameState) -> void:
 	state.on_cheese.connect(_on_cheese)
 	state.on_power_up.connect(_on_power_up)
 
-func _on_cheese(value: int) -> void:
+func _on_cheese(_value: int) -> void:
 	if state.in_tutorial: return
 	var random := randi_range(0, len(CHEESE_QUIPS) - 1)
 	show_popup(CHEESE_QUIPS[random])
 
-func _on_power_up(value: int) -> void:
+func _on_power_up(_value: int) -> void:
 	if state.in_tutorial: return
 	var random := randi_range(0, len(RAT_QUIPS) - 1)
 	show_popup(RAT_QUIPS[random])

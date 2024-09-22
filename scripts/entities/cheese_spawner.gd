@@ -25,7 +25,7 @@ func _on_start() -> void:
 	for i in range(5):
 		spawn_cheese()
 
-func _on_cheese() -> void:
+func _on_cheese(_value: int) -> void:
 	spawn_cheese()
 
 func spawn_cheese() -> void:
