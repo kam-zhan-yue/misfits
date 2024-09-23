@@ -118,6 +118,9 @@ position = Vector2(-223, 5)
 [node name="Cheese8" type="Marker2D" parent="Spawners/CheeseSpawner"]
 position = Vector2(-222, 170)
 
+[node name="PowerUp" type="Marker2D" parent="Spawners/CheeseSpawner"]
+position = Vector2(-85, 172)
+
 [node name="CameraManager" type="Camera2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 295)
@@ -135,15 +138,11 @@ script = ExtResource("3_d2h5e")
 unique_name_in_owner = true
 position = Vector2(-220, -230)
 scale = Vector2(0.2, 0.2)
-speed = 75.0
-vision_range = 100.0
 
 [node name="Enemy2" parent="." instance=ExtResource("8_v6n06")]
 unique_name_in_owner = true
 position = Vector2(270, 223)
 scale = Vector2(0.2, 0.2)
-speed = 75.0
-vision_range = 100.0
 
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true

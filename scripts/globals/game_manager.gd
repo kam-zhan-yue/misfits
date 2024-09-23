@@ -27,5 +27,4 @@ func _on_start_tutorial() -> void:
 
 func _on_start_game() -> void:
 	BoidManager.start()
-	cheese_spawner.start()
 	camera_manager.zoom_to(2)

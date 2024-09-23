@@ -4,6 +4,7 @@ extends Node2D
 @export var cheese_scene: PackedScene
 @export var coin_scene: PackedScene
 @export var spawn_points: Array[Marker2D]
+@onready var power_up := $PowerUp as Marker2D
 
 const MAX = 100
 var state: GameState
@@ -18,11 +19,6 @@ func init(game_state: GameState) -> void:
 	coin.global_position = $InitialCoin.global_position
 	coin.init(state, 50)
 
-func start() -> void:
-	while(true):
-		spawn_power_up()
-		await Global.seconds(10.0)
-
 func _on_start() -> void:
 	spawn_cheese()
 
@@ -32,6 +28,7 @@ func _on_cheese(_value: int) -> void:
 func spawn_cheese() -> void:
 	if current >= len(spawn_points):
 		current = 0
+		spawn_power_up()
 	var spawn_point := spawn_points[current]
 	var cheese := cheese_scene.instantiate() as Cheese
 	self.call_deferred("add_child", cheese)
@@ -44,7 +41,5 @@ func spawn_power_up() -> void:
 		return
 	var coin := coin_scene.instantiate() as PowerUp
 	self.call_deferred("add_child", coin)
-	var random_x := randf_range(-BoidManager.SETTINGS.width, BoidManager.SETTINGS.width)
-	var random_y := randf_range(-BoidManager.SETTINGS.height, BoidManager.SETTINGS.height)
-	coin.global_position = Vector2(random_x, random_y)
-	coin.init(state, 10)
+	coin.global_position = power_up.global_position
+	coin.init(state, 50)
