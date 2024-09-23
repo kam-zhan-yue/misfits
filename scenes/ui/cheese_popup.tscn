@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0jeb0jfxxw2x"]
 
 [ext_resource type="Script" path="res://scripts/ui/cheese_popup.gd" id="1_smklh"]
-[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="1_y616v"]
+[ext_resource type="Theme" uid="uid://wdy7s8i5fxnk" path="res://resources/subtitle.tres" id="2_hqv1j"]
 
 [node name="CheesePopup" type="Control"]
 layout_mode = 3
@@ -28,7 +28,7 @@ grow_vertical = 0
 [node name="Text" type="RichTextLabel" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("1_y616v")
+theme = ExtResource("2_hqv1j")
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "tutorial text goes here"

@@ -1,7 +1,7 @@
 class_name TutorialPopup
 extends Control
 
-const TAGS = "[shake rate=50.0 level=5 connected=1][center]"
+const TAGS = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]"
 
 const TUTORIALS = {
 	"INTRO" : "what's better than one little guy?",

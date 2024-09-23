@@ -4,7 +4,6 @@ extends Node2D
 @onready var player := %Player as Player
 @onready var camera_manager := %CameraManager as CameraManager
 @onready var cheese_spawner := %CheeseSpawner as CheeseSpawner
-@onready var enemy := %Enemy as Enemy
 @onready var ui := %UI as UI
 
 var game_state: GameState
@@ -17,8 +16,8 @@ func init_game() -> void:
 	game_state.on_start_tutorial.connect(_on_start_tutorial)
 	game_state.on_start.connect(_on_start_game)
 	cheese_spawner.init(game_state)
-	enemy.init(game_state)
 	ui.init(game_state)
+	Global.on_init.emit(game_state)
 
 func _on_start_tutorial() -> void:
 	BoidManager.start()

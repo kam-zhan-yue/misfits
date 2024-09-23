@@ -28,7 +28,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("2_nnfxw")
 bbcode_enabled = true
-text = "[shake rate=50.0 level=5 connected=1][center]Like, A Hundred Little Guys"
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Like, A Hundred Little Guys"
 fit_content = true
 scroll_active = false
 
@@ -37,7 +37,7 @@ layout_mode = 2
 theme = ExtResource("2_nnfxw")
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
-text = "[shake rate=50.0 level=5 connected=1][center]use WASD or Arrow Keys to begin"
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]use WASD or Arrow Keys to begin"
 fit_content = true
 scroll_active = false
 

@@ -2,6 +2,8 @@ extends Node
 
 var zoom := 3.0
 
+signal on_init(GameState)
+
 func seconds(time: float) -> void:
 	await get_tree().create_timer(time).timeout
 	

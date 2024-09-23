@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4brbimve40dc"]
 
-[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="1_3whw6"]
 [ext_resource type="Script" path="res://scripts/ui/tutorial_popup.gd" id="1_qusqi"]
+[ext_resource type="Theme" uid="uid://wdy7s8i5fxnk" path="res://resources/subtitle.tres" id="2_5k1s0"]
 
 [node name="TutorialPopup" type="Control"]
 layout_mode = 3
@@ -23,8 +23,7 @@ theme_override_constants/margin_top = 100
 [node name="Text" type="RichTextLabel" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("1_3whw6")
-theme_override_font_sizes/normal_font_size = 22
+theme = ExtResource("2_5k1s0")
 bbcode_enabled = true
 text = "tutorial text goes here"
 fit_content = true

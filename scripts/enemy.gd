@@ -8,6 +8,7 @@ extends Node2D
 var state: GameState
 
 func _ready():
+	Global.on_init.connect(init)
 	set_physics_process(false)
 	await get_tree().physics_frame
 	set_physics_process(true)
