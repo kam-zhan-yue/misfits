@@ -4,6 +4,11 @@ extends Node2D
 @onready var player := %Player as Player
 @onready var camera_manager := %CameraManager as CameraManager
 @onready var cheese_spawner := %CheeseSpawner as CheeseSpawner
+
+@onready var audio_rats := $AudioRats as AudioStreamPlayer2D
+@onready var audio_cheese := $AudioCheese as AudioStreamPlayer2D
+@onready var audio_dead := $AudioDead as AudioStreamPlayer2D
+
 @onready var ui := %UI as UI
 
 var game_state: GameState
@@ -17,6 +22,8 @@ func init_game() -> void:
 	game_state.on_start_tutorial.connect(_on_start_tutorial)
 	game_state.on_start.connect(_on_start_game)
 	game_state.on_restart_game.connect(_on_restart_game)
+	game_state.on_cheese.connect(_on_cheese)
+	game_state.on_power_up.connect(_on_power_up)
 	cheese_spawner.init(game_state)
 	ui.init(game_state)
 	Global.on_init.emit(game_state)
@@ -32,6 +39,7 @@ func _on_start_game() -> void:
 	camera_manager.zoom_to(2)
 
 func _on_erase(value: int) -> void:
+	audio_dead.play()
 	if value == 0:
 		# end game here
 		game_state.game_over()
@@ -40,3 +48,9 @@ func _on_erase(value: int) -> void:
 func _on_restart_game() -> void:
 	BoidManager.restart()
 	get_tree().reload_current_scene()
+
+func _on_cheese(_value: int) -> void:
+	audio_cheese.play()
+
+func _on_power_up(_value: int) -> void:
+	audio_rats.play()

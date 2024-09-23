@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=16 format=4 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="Script" path="res://scripts/initialiser.gd" id="1_cysgk"]
 [ext_resource type="Script" path="res://scripts/boids/boid_spawner.gd" id="1_xeaao"]
@@ -10,7 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://coxw7p67mhj5o" path="res://scenes/coin.tscn" id="6_8wels"]
 [ext_resource type="PackedScene" uid="uid://ccixhix1x28n7" path="res://scenes/enemy.tscn" id="8_v6n06"]
 [ext_resource type="PackedScene" uid="uid://iyui2mtn03bo" path="res://scenes/ui/ui.tscn" id="9_4eqlh"]
+[ext_resource type="AudioStream" uid="uid://b7ltqgbh1mmsq" path="res://assets/audio/RATS.mp3" id="12_0fqti"]
 [ext_resource type="TileSet" uid="uid://bx3atefqxgd88" path="res://resources/tilemap.tres" id="12_4tdxg"]
+[ext_resource type="AudioStream" uid="uid://colsgskn75s5a" path="res://assets/audio/race_track.mp3" id="12_igmqe"]
+[ext_resource type="AudioStream" uid="uid://bpxe38utoga3n" path="res://assets/audio/CHEESE.mp3" id="13_egdgh"]
+[ext_resource type="AudioStream" uid="uid://mo4hqqpn2rx5" path="res://assets/audio/DEAD.mp3" id="13_yfswn"]
 
 [node name="Main" type="Node2D"]
 
@@ -148,3 +152,18 @@ script = ExtResource("3_btgvy")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("4_xhb8v")
+
+[node name="AudioRats" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("12_0fqti")
+
+[node name="AudioDead" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("13_yfswn")
+
+[node name="AudioCheese" type="AudioStreamPlayer2D" parent="GameManager"]
+stream = ExtResource("13_egdgh")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("12_igmqe")
+autoplay = true
