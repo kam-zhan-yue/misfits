@@ -19,6 +19,10 @@ func follow_state() -> void:
 
 func follow() -> void:
 	var boids := BoidManager.boids
+	if len(boids) == 0:
+		position = Vector2.ZERO
+		return
+		
 	var average := Vector2.ZERO
 	var in_bounds := true
 	var view_rect = Rect2(global_position, get_viewport_rect().size / zoom)
@@ -36,7 +40,7 @@ func follow() -> void:
 			else:
 				zoom_to(3.0)
 		else:
-			zoom_to(1.25)
+			zoom_to(3.0)
 
 
 func in_rect(rect: Rect2, point: Vector2) -> bool:

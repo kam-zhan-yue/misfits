@@ -29,7 +29,6 @@ grow_vertical = 0
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_hqv1j")
-theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "tutorial text goes here"
 fit_content = true

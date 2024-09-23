@@ -15,6 +15,7 @@ var group: int
 @export var using_anim := false
 @onready var sprite := %Sprite2D as Sprite2D
 var animated_sprite_2d: AnimatedSprite2D
+@onready var collect_area := %CollectArea as Area2D
 
 signal on_uninit
 

@@ -25,4 +25,4 @@ func release() -> void:
 		fade_timer += get_process_delta_time()
 		await Global.frame()
 	await Global.seconds(1.0)
-	queue_free()
+	get_parent().queue_free()

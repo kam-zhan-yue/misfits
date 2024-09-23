@@ -10,6 +10,9 @@ var timer := 0.0
 
 @onready var animated_sprite_2d := $AnimatedSprite2D as AnimatedSprite2D
 
+func _ready() -> void:
+	animated_sprite_2d.play()
+
 func _process(delta: float) -> void:
 	if timer <= FADE_IN:
 		timer += delta
