@@ -17,9 +17,9 @@ func _ready():
 func init(game_state: GameState) -> void:
 	state = game_state
 
-
 func _physics_process(delta: float) -> void:
 	if not state: return
+	if state.over: return
 	
 	BoidManager.bound(self)
 	

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cac0w2klq76jw"]
+
+[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="1_0s68j"]
+[ext_resource type="Texture2D" uid="uid://c0getepq84yw7" path="res://assets/sprites/rat.png" id="2_5065m"]
+[ext_resource type="Texture2D" uid="uid://bhq33irpltpwl" path="res://assets/sprites/cheese.png" id="3_457e5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(630, 500)
+layout_mode = 2
+color = Color(0.66, 0.2046, 0.51579, 1)
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(500, 0)
+offset_left = -278.0
+offset_top = -209.0
+offset_right = 122.0
+offset_bottom = -91.0
+theme = ExtResource("1_0s68j")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1]Like, A Hundred Little Guys"
+fit_content = true
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(250, 250)
+offset_left = -17.0
+offset_top = 78.0
+offset_right = 233.0
+offset_bottom = 328.0
+rotation = -0.723879
+texture = ExtResource("2_5065m")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(250, 250)
+offset_left = -267.0
+offset_top = -26.0
+offset_right = -17.0
+offset_bottom = 224.0
+texture = ExtResource("3_457e5")
+
+[node name="Camera2D" type="Camera2D" parent="."]

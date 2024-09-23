@@ -98,10 +98,8 @@ func update_rotation() -> void:
 
 func get_obstacle_force() -> Vector2:
 	var space_state := get_world_2d().direct_space_state
-	var ray_length := BoidManager.SETTINGS.obstacle_vision_radius
 	var shape_rid := PhysicsServer2D.circle_shape_create()
-	var radius := 16.0
-	PhysicsServer2D.shape_set_data(shape_rid, radius)
+	PhysicsServer2D.shape_set_data(shape_rid, BoidManager.SETTINGS.obstacle_vision_radius)
 	var params := PhysicsShapeQueryParameters2D.new()
 	params.collision_mask = pow(2, 1-1)
 	params.shape_rid = shape_rid

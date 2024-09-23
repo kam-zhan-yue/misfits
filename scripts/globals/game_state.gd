@@ -8,6 +8,7 @@ var root: Node2D
 var cheeses := 0
 var spawnable := 0
 var in_tutorial := false
+var over := false
 
 signal on_cheese(int)
 signal on_power_up(int)
@@ -54,9 +55,11 @@ func trigger_tutorial(key: String) -> void:
 		on_tutorial.emit(key)
 
 func game_over() -> void:
+	over = true
 	on_game_over.emit()
 
 func game_complete() -> void:
+	over = true
 	on_game_complete.emit()
 
 func restart_game() -> void:

@@ -61,7 +61,7 @@ script = ExtResource("1_mfxeb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kqn6k")
-frame_progress = 0.858233
+frame_progress = 0.775296
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

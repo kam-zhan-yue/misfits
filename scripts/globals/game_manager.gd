@@ -45,7 +45,6 @@ func _on_start_game() -> void:
 func _on_erase(value: int) -> void:
 	audio_dead.play()
 	if value == 0:
-		# end game here
 		bgm.stop()
 		audio_over.play()
 		game_state.game_over()
