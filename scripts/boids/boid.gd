@@ -94,7 +94,6 @@ func update_rotation() -> void:
 	var angle = atan2(velocity.y, velocity.x)
 	if sprite:
 		sprite.rotation = angle + PI * 0.5
-		#sprite.flip_v = Global.flip_v(angle)
 
 func get_obstacle_force() -> Vector2:
 	var space_state := get_world_2d().direct_space_state

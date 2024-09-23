@@ -34,7 +34,7 @@ func follow() -> void:
 			if len(boids) <= 10:
 				zoom_to(5.0)
 			else:
-				zoom_to(2.0)
+				zoom_to(3.0)
 		else:
 			zoom_to(1.25)
 

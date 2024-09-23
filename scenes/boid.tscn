@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://iqjijkohmmgs"]
 
 [ext_resource type="Script" path="res://scripts/boids/boid.gd" id="1_1pm5u"]
-[ext_resource type="Texture2D" uid="uid://8b7a6uiwrf0w" path="res://assets/aseprite/rat.aseprite" id="2_0mgie"]
+[ext_resource type="Texture2D" uid="uid://c0getepq84yw7" path="res://assets/sprites/rat.png" id="2_2p5tw"]
 [ext_resource type="Script" path="res://scripts/boids/boid_fade.gd" id="3_mary7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0060u"]
@@ -13,7 +13,7 @@ script = ExtResource("1_1pm5u")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 z_index = 10
-texture = ExtResource("2_0mgie")
+texture = ExtResource("2_2p5tw")
 
 [node name="CollectArea" type="Area2D" parent="."]
 unique_name_in_owner = true
