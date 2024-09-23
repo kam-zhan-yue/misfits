@@ -31,11 +31,6 @@ func _on_start_game() -> void:
 	BoidManager.start()
 	camera_manager.zoom_to(2)
 
-func _on_cheese(value: int) -> void:
-	if value == GameState.CHEESE_PER_ROUND * GameState.ROUNDS:
-		# finish game
-		pass
-
 func _on_erase(value: int) -> void:
 	if value == 0:
 		# end game here
@@ -43,4 +38,5 @@ func _on_erase(value: int) -> void:
 		pass
 
 func _on_restart_game() -> void:
+	BoidManager.restart()
 	get_tree().reload_current_scene()

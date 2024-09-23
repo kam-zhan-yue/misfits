@@ -37,6 +37,8 @@ func get_cheese() -> void:
 	cheeses += 1
 	on_cheese.emit(cheeses)
 	trigger_tutorial("CHEESE")
+	if cheeses == CHEESE_PER_ROUND * ROUNDS:
+		game_complete()
 
 func add_power_up(value: int) -> void:
 	spawnable += value

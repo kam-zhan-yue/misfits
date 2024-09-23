@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://burrmy3qjfiac"]
+
+[ext_resource type="Script" path="res://scripts/ui/score_popup.gd" id="1_wu3gq"]
+[ext_resource type="Texture2D" uid="uid://bhq33irpltpwl" path="res://assets/sprites/cheese.png" id="2_2l8hp"]
+
+[node name="ScorePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wu3gq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Cheese1" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_2l8hp")
+expand_mode = 1
+
+[node name="Cheese2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_2l8hp")
+expand_mode = 1
+
+[node name="Cheese3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("2_2l8hp")
+expand_mode = 1

@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://djx5t0kkty3ht"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over_popup.gd" id="1_o16px"]
+[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="2_fouow"]
+
+[node name="GameOverPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o16px")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_fouow")
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Game Over!"
+fit_content = true
+scroll_active = false
+
+[node name="Subtitle2" type="RichTextLabel" parent="Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_fouow")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Press [Space] to restart"
+fit_content = true
+scroll_active = false

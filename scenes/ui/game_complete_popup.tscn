@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://klixp0c1ycd3"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_complete_popup.gd" id="1_hvch7"]
+[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="2_fjv1t"]
+[ext_resource type="Texture2D" uid="uid://bhq33irpltpwl" path="res://assets/sprites/cheese.png" id="4_42i4m"]
+
+[node name="GameCompletePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvch7")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_fjv1t")
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Cheeeeeeeeseeeee"
+fit_content = true
+scroll_active = false
+
+[node name="Subtitle2" type="RichTextLabel" parent="Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_fjv1t")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Press [Space] to restart"
+fit_content = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_42i4m")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Main/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_42i4m")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Main/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_42i4m")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Main/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_42i4m")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="Main/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_42i4m")
+stretch_mode = 5
