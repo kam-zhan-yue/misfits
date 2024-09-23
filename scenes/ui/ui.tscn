@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://iyui2mtn03bo"]
+[gd_scene load_steps=9 format=3 uid="uid://iyui2mtn03bo"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_npcuu"]
 [ext_resource type="PackedScene" uid="uid://dmfuuxyvr4but" path="res://scenes/ui/start_popup.tscn" id="2_1e1ya"]
 [ext_resource type="PackedScene" uid="uid://4brbimve40dc" path="res://scenes/ui/tutorial_popup.tscn" id="3_7skco"]
 [ext_resource type="PackedScene" uid="uid://c0jeb0jfxxw2x" path="res://scenes/ui/cheese_popup.tscn" id="4_t1ucx"]
+[ext_resource type="Script" path="res://scenes/ui/score_popup.gd" id="5_kjwtv"]
+[ext_resource type="Texture2D" uid="uid://bhq33irpltpwl" path="res://assets/sprites/cheese.png" id="6_154n1"]
+[ext_resource type="Script" path="res://scripts/ui/game_over_popup.gd" id="7_27yux"]
+[ext_resource type="Theme" uid="uid://d30s6mf8w0b8k" path="res://resources/title.tres" id="8_pw343"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -25,3 +29,158 @@ layout_mode = 1
 [node name="CheesePopup" parent="." instance=ExtResource("4_t1ucx")]
 unique_name_in_owner = true
 layout_mode = 1
+
+[node name="ScorePopup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_kjwtv")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScorePopup"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScorePopup/MarginContainer"]
+layout_mode = 2
+
+[node name="Cheese1" type="TextureRect" parent="ScorePopup/MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("6_154n1")
+expand_mode = 1
+
+[node name="Cheese2" type="TextureRect" parent="ScorePopup/MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("6_154n1")
+expand_mode = 1
+
+[node name="Cheese3" type="TextureRect" parent="ScorePopup/MarginContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.196078)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("6_154n1")
+expand_mode = 1
+
+[node name="GameOverPopup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_27yux")
+
+[node name="Main" type="Control" parent="GameOverPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOverPopup/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverPopup/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPopup/Main/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="GameOverPopup/Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_pw343")
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Game Over!"
+fit_content = true
+scroll_active = false
+
+[node name="Subtitle2" type="RichTextLabel" parent="GameOverPopup/Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_pw343")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Press [Space] to restart"
+fit_content = true
+scroll_active = false
+
+[node name="GameCompletePopup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_27yux")
+
+[node name="Main" type="Control" parent="GameCompletePopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameCompletePopup/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameCompletePopup/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameCompletePopup/Main/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="GameCompletePopup/Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_pw343")
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Game Over!"
+fit_content = true
+scroll_active = false
+
+[node name="Subtitle2" type="RichTextLabel" parent="GameCompletePopup/Main/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_pw343")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[outline_size=10][shake rate=50.0 level=5 connected=1][center]Press [Space] to restart"
+fit_content = true
+scroll_active = false

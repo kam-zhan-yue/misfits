@@ -8,6 +8,8 @@ var root: Node2D
 var input: Vector2
 var running := false
 
+signal on_erase(int)
+
 func set_root(r: Node2D) -> void:
 	root = r
 
@@ -19,6 +21,7 @@ func init(boid: Boid) -> void:
 
 func uninit(boid: Boid) -> void:
 	boids.erase(boid)
+	on_erase.emit(len(boids))
 
 func _process(_delta: float) -> void:
 	if not running: return

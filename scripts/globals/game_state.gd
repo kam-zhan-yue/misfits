@@ -1,6 +1,8 @@
 class_name GameState
 extends Node
 
+const ROUNDS = 3
+const CHEESE_PER_ROUND = 8
 var player: Player
 var root: Node2D
 var cheeses := 0
@@ -12,6 +14,9 @@ signal on_power_up(int)
 signal on_start
 signal on_start_tutorial
 signal on_tutorial(String)
+signal on_game_over
+signal on_game_complete
+signal on_restart_game
 
 var seen: Array[String] = []
 
@@ -45,3 +50,12 @@ func trigger_tutorial(key: String) -> void:
 	if key not in seen:
 		seen.append(key)
 		on_tutorial.emit(key)
+
+func game_over() -> void:
+	on_game_over.emit()
+
+func game_complete() -> void:
+	on_game_complete.emit()
+
+func restart_game() -> void:
+	on_restart_game.emit()
